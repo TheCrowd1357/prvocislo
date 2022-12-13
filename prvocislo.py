@@ -55,6 +55,31 @@ def power(a, n, p):
     return result % p
 
 
+# If n is prime, then always returns true,
+# If n is composite than returns false with
+# high probability Higher value of k increases
+# probability of correct result
 def isPrime(n, k):
+     
+    # Corner cases
+    if n == 1 or n == 4:
+        return False
+    elif n == 2 or n == 3:
+        return True
+     
+    # Try k times
+    else:
+        for i in range(k):
+             
+            # Pick a random number
+            # in [2..n-2]     
+            # Above corner cases make
+            # sure that n > 4
+            a = random.randint(2, n - 2)
+             
+            # Fermat's little theorem
+            if power(a, n - 1, n) != 1:
+                return False
+    return True
     
 print(type_prime(5))
