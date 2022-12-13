@@ -8,6 +8,14 @@ def type_prime(input):
             return counting_prime(input)
         case float():
             return counting_prime(input)
+        case str():
+            try:
+                return counting_prime(float(input))
+            except ValueError:
+                return False
+        case _:
+            return False
+
 
 def counting_prime(input):
     if(input == int(input)):
@@ -44,3 +52,5 @@ def power(a, n, p):
 
 
 def isPrime(n, k):
+    
+print(type_prime(5))
