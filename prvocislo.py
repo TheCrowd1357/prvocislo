@@ -2,6 +2,10 @@ import sys
 from math import sqrt
 import random
 
+
+# https://en.wikipedia.org/wiki/Fermat%27s_factorization_method
+
+
 def type_prime(input):
     match input:
         case int():
