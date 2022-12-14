@@ -25,7 +25,8 @@ def counting_prime(input):
     if(input == int(input)):
         if (input > 100_000):
             return isPrime(input, 3)
-
+        if(input % 2 == 0):
+            return False 
 
 #Fermat's factorization method
 
