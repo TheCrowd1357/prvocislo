@@ -1,4 +1,4 @@
-import sys
+"""Primality testing."""
 from math import sqrt
 import random
 
@@ -7,6 +7,29 @@ import random
 
 
 def type_prime(input):
+    """
+    Say if input is prime.
+
+    Check input and pass on to counting_prime, returns only bool
+    >>> type_prime(2)
+    True
+    >>> type_prime(4)
+    False
+    >>> type_prime(-3)
+    False
+    >>> type_prime(7.0)
+    True
+    >>> type_prime(7.1)
+    False
+    >>> type_prime("5")
+    True
+    >>> type_prime("6")
+    False
+    >>> type_prime("abc")
+    False
+    >>> type_prime(True)
+    False
+    """
     match input:
         case int():
             return counting_prime(input)
@@ -22,6 +45,21 @@ def type_prime(input):
 
 
 def counting_prime(input):
+    """
+    Give primality of number.
+
+    Checks size, bruteforces, or passes to is_prime
+    >>> counting_prime(2)
+    True
+    >>> counting_prime(4)
+    False
+    >>> counting_prime(-3)
+    False
+    >>> counting_prime(7.0)
+    True
+    >>> counting_prime(7.1)
+    False
+    """
     if(input == int(input)):
         if (input > 100_000):
             return isPrime(input, 3)
@@ -40,6 +78,17 @@ def counting_prime(input):
 # Iterative Function to calculate
 # (a^n)%p in O(logy)
 def power(a, n, p):
+    """
+    Don't return 1 if number isn't prime.
+
+    Can, and does, return 1 if number isn't prime
+    >>> power(2,12)
+    8
+    >>> power(2,13)
+    1
+    >>> power(3,15)
+    9
+    """
      
     # Initialize result
     result = 1
@@ -68,6 +117,21 @@ def power(a, n, p):
 # high probability Higher value of k increases
 # probability of correct result
 def isPrime(n, k):
+    """
+    Try primality heuristically k times.
+
+    Tries a new random number each time
+    >>> is_prime(2,3)
+    True
+    >>> is_prime(4,5)
+    False
+    >>> is_prime(-3,2)
+    False
+    >>> is_prime(7.0,3)
+    True
+    >>> is_prime(7.1,3)
+    False
+    """
      
     # Corner cases
     if n == 1 or n == 4:
