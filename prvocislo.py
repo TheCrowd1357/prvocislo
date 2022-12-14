@@ -62,7 +62,7 @@ def counting_prime(input):
     """
     # if whole number
     if (input == int(input)):
-        if (input > 100_000):
+        if (input > 100_000_000):
             return is_prime(input, 3)
         if (input % 2 == 0):
             return False
