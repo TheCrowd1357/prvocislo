@@ -83,3 +83,8 @@ def isPrime(n, k):
     return True
     
 if __name__ == "__main__":
+     n = input("Enter a whole number: ")
+        if (type_prime(n)):
+            print(n + " is a whole number")
+        else:
+            print(n + " is not a whole number")
