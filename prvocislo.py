@@ -27,6 +27,7 @@ def counting_prime(input):
             return isPrime(input, 3)
         if(input % 2 == 0):
             return False 
+        for i in range(3, int(sqrt(input) + 1), 2): 
 
 #Fermat's factorization method
 
