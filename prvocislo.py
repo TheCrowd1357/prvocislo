@@ -26,9 +26,15 @@ def counting_prime(input):
         if (input > 100_000):
             return isPrime(input, 3)
         if(input % 2 == 0):
-            return False 
-        for i in range(3, int(sqrt(input) + 1), 2): 
-
+            return False  
+        for i in range(3, int(sqrt(input) + 1), 2):
+            # no need to count to input
+            # biggest not yet tested prime divider is square root of input
+            if(input % i == 0):
+                return False  
+        return True
+    # Non whole numbers cannot be prime
+    return False
 #Fermat's factorization method
 
 # Iterative Function to calculate
