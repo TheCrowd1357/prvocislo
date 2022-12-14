@@ -82,4 +82,4 @@ def isPrime(n, k):
                 return False
     return True
     
-print(type_prime(5))
+if __name__ == "__main__":
