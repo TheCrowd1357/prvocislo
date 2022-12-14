@@ -39,9 +39,9 @@ def type_prime(input):
             try:
                 return counting_prime(float(input))
             except ValueError:
-                return False
+                return False  # not a number
         case _:
-            return False
+            return False  # not a number
 
 
 def counting_prime(input):
@@ -60,24 +60,24 @@ def counting_prime(input):
     >>> counting_prime(7.1)
     False
     """
-    if(input == int(input)):
+    # if whole number
+    if (input == int(input)):
         if (input > 100_000):
-            return isPrime(input, 3)
-        if(input % 2 == 0):
-            return False  
+            return is_prime(input, 3)
+        if (input % 2 == 0):
+            return False
         for i in range(3, int(sqrt(input) + 1), 2):
             # no need to count to input
             # biggest not yet tested prime divider is square root of input
-            if(input % i == 0):
-                return False  
+            if (input % i == 0):
+                return False
         return True
     # Non whole numbers cannot be prime
     return False
-#Fermat's factorization method
 
-# Iterative Function to calculate
-# (a^n)%p in O(logy)
-def power(a, n, p):
+
+# Fermat's factorization method
+def power(a, p):
     """
     Don't return 1 if number isn't prime.
 
@@ -89,26 +89,20 @@ def power(a, n, p):
     >>> power(3,15)
     9
     """
-     
     # Initialize result
     result = 1
-     
-    # Update 'a' if 'a' >= p
-    a = a % p 
-     
+    n = p - 1
+    # Remove every p from a
+    a = a % p
     while n > 0:
-         
-        # If n is odd, multiply
-        # 'a' with result
+        # If n is odd, multiply 'a' with result
         if n % 2:
             result = (result * a) % p
             n = n - 1
         else:
             a = (a ** 2) % p
-             
             # n must be even now
             n = n // 2
-             
     return result % p
 
 
@@ -116,7 +110,7 @@ def power(a, n, p):
 # If n is composite than returns false with
 # high probability Higher value of k increases
 # probability of correct result
-def isPrime(n, k):
+def is_prime(n, k):
     """
     Try primality heuristically k times.
 
@@ -132,25 +126,19 @@ def isPrime(n, k):
     >>> is_prime(7.1,3)
     False
     """
-     
     # Corner cases
     if n == 1 or n == 4:
         return False
     elif n == 2 or n == 3:
         return True
-     
     # Try k times
     else:
         for i in range(k):
-             
-            # Pick a random number
-            # in [2..n-2]     
-            # Above corner cases make
+            # Pick a random number in [2..n-2]
             # sure that n > 4
             a = random.randint(2, n - 2)
-             
             # Fermat's little theorem
-            if power(a, n - 1, n) != 1:
+            if power(a, n) != 1:
                 return False
     return True
     
